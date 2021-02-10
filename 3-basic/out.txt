@@ -1,0 +1,6 @@
+hello
+hello, world
+hello (file scope?):file scope
+hello (function scope?):function scope
+hello (block scope?):block scope
+0.000000+1.414214i
