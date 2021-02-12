@@ -6,4 +6,7 @@ LDLIBS = -lm
 out.txt: main
 	./$< > $@
 
+main: main.c
+
 clean:
+	$(RM) main out.txt
