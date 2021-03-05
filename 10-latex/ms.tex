@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage{graphicx}
+\title{A brief introduction to \LaTeX document preparation system}
+\author{C.S.O.}
+\date{}
+\begin{document}
+\maketitle
+\begin{abstract}
+	We show some basic capabilities of the \LaTeX system: math, figures, references, sections...
+\end{abstract}
+\section{Math}
+The gamma-function, denoted $\Gamma$, is usually defined via an integral,
+	\begin{equation}\label{eq:integ}
+\Gamma(z)=\int_0^\infty x^{z-1}e^{-x} dx\;
+	\end{equation}
+
+\section{Numerical approximation of the gamma function}
+One of many simple approximations to the integral~(\ref{eq:integ}) function is the Gergo Nemes~\cite{gergo-nemes} formulae,
+	\begin{equation}\lable{eq:nemes}
+\Gamma(z) \approx \sqrt{\frac{2\pi}{z} } \left(\frac{1}{e} \left(z +
+\frac{1}{12z - \frac{1}{10z}}\right)\right)^z \;
+	\end{equation}
+
+\section{Figures}
+Here is an illustration of the Nemes' formula, compared to the built-in gamma function from the standart C-library. First, the "\LaTeX" terminal of Gnuplot.
+	\begin{figure}\lable{fig:gpl}
+\input{fig-gpl.tex}
+	\end{figure}
+
+
+\begin{thebibliography}{9}
+\bibitem{gergo-nemes} Nemes, Gergo (2010), "New asymptotic expansion
+for the Gamma function", Archiv der Mathematik, 95 (2): 161â€“169,
+\end{thebibliography}{9}
+\end{document}
