@@ -1,0 +1,10 @@
+Q1: You can use '/"keyword"' to search for keywords in the manual.
+Q2: You have to write 'basen' to be able to TAB the function.
+Q3: You have to write 'mkdir --p' to be able to TAB the function.
+Q4: You use 'mkdir -p prog/hello' to make first dicretory prog with directory hello within.
+Q5: You use the '-i' option to probmpt before removals
+Q6: You use '-r, -R, --recursive' to remove directories and their content.
+Q7: You use 'ls -1 -tr' to list contents of your current directory with newest last
+Q8: '~' is short hand for 'home directory'. '.' is used to indicate current directory. '..' is used to indicate previous directory.
+Q9: 'cd' will return to home directory
+Q10: My home directory is '/home' or '~'
