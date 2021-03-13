@@ -1,0 +1,10 @@
+Gamma(5) = 24
+Bessel function of the first order of 0.5 is equal to 0.242268
+The squareroot of -2 is 0 + 1.41421i
+e to the power of 3.14159i is equal to -1.000000 + 0.000000i
+e to the power of i is 0.540302 + 0.841471i
+i to the power of e is -0.428220 + -0.903675i
+i to the power of i is 0.207880 + 0.000000i
+FL: 0.1111111119389533996582031
+DB: 0.1111111111111111049432054
+LD: 0.1111111111111111111096053
