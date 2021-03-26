@@ -1,3 +1,22 @@
-my max int = 2147483647
-my max int = 2147483647
-my max int = 2147483647
+
+The inbuild INT_MAX is = 	  2147483647
+While max int = 		  2147483647
+For max int = 			  2147483647
+Do max int = 			  2147483647
+
+The inbuild INT_MIN is = 	 -2147483648
+While min int = 		 -2147483648
+For min int = 			 -2147483648
+Do min int = 			 -2147483648
+
+For Float_while_epsilon =	  1.19209e-07
+For Flaot_for_epsilon =		  1.19209e-07
+For Float_do_epsilon =		  1.19209e-07
+
+For Double_while_epsilon =	  2.22045e-16
+For Double_for_epsilon =	  2.22045e-16
+For Double_do_epsilon =		  2.22045e-16
+
+For Long_while_epsilon =	  1.0842e-19
+For Long_for_epsilon =		  1.0842e-19
+For Long_do_epsilon =		  1.0842e-19
