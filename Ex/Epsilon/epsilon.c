@@ -105,5 +105,18 @@ int main() {
   dL*=2;
   printf("For Long_do_epsilon =\t\t  %Lg\n", dL);
 
+  int max = INT_MAX/2;
+  float suf = 0;
+  float sdf = 0;
+  for (int i = 1; i < max; i += 1) {
+    suf += 1.0/i;
+    sdf += 1.0/(max - i);
+  }
+  printf("The max is = %d\n", max);
+  printf("The sum_up_flaot is = %f\n", suf);
+  printf("The sum_down_flaot is = %f\n", sdf);
+
+
+
   return 0;
 }
