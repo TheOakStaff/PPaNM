@@ -1,3 +1,41 @@
-The max is = 2147483647
+
+The inbuild INT_MAX is = 	  2147483647
+While max int = 		  2147483647
+For max int = 			  2147483647
+Do max int = 			  2147483647
+
+The inbuild INT_MIN is = 	 -2147483648
+While min int = 		 -2147483648
+For min int = 			 -2147483648
+Do min int = 			 -2147483648
+
+For Float_while_epsilon =	  1.19209e-07
+For Flaot_for_epsilon =		  1.19209e-07
+For Float_do_epsilon =		  1.19209e-07
+
+For Double_while_epsilon =	  2.22045e-16
+For Double_for_epsilon =	  2.22045e-16
+For Double_do_epsilon =		  2.22045e-16
+
+For Long_while_epsilon =	  1.0842e-19
+For Long_for_epsilon =		  1.0842e-19
+For Long_do_epsilon =		  1.0842e-19
+The max is = 1073741823
 The sum_up_flaot is = 15.403683
 The sum_down_flaot is = 18.807919
+The difference is that when adding relatively equally sized number
+together the pressision is preserved
+When adding together numbers which are relatively far appart
+the pressision byond the larger number is lost
+
+If we had infinite pressision the sums would converge as a
+functions of max
+
+The sum_up_double is = 21.3716
+The sum_down_double is = 21.3716
+With higer pressision no data is lost
+
+
+Equal test function
+running Equal test with a = 2, b = 2.002, tau = 0.001 and epsilon =  0.001
+Relative pressision achived

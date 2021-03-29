@@ -116,7 +116,24 @@ int main() {
   printf("The sum_up_flaot is = %f\n", suf);
   printf("The sum_down_flaot is = %f\n", sdf);
 
+  printf("The difference is that when adding relatively equally sized number");
+  printf("\ntogether the pressision is preserved\n");
+  printf("When adding together numbers which are relatively far appart\n");
+  printf("the pressision byond the larger number is lost\n");
 
+  printf("\nIf we had infinite pressision the sums would converge as a\n");
+  printf("functions of max\n\n");
+
+  double sud = 0;
+  double sdd = 0;
+  for (int i = 1; i < max; i += 1) {
+      sud += 1.0/i;
+      sdd += 1.0/(max - i);
+  }
+
+  printf("The sum_up_double is = %g\n", sud);
+  printf("The sum_down_double is = %g\n", sdd);
+  printf("With higer pressision no data is lost");
 
   return 0;
 }
