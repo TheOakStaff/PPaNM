@@ -1,7 +1,9 @@
-#include "stdio.h"
-#include "math.h"
-#include "limits.h"
-#include "float.h"
+#include <stdio.h>
+#include <math.h>
+#include <limits.h>
+#include <float.h>
+
+int equal(double a, double b, double tau, double epsilon);
 
 int main() {
 
@@ -134,6 +136,8 @@ int main() {
   printf("The sum_up_double is = %g\n", sud);
   printf("The sum_down_double is = %g\n", sdd);
   printf("With higer pressision no data is lost");
+
+  equal(2.000,2.002,0.001,0.001);
 
   return 0;
 }
