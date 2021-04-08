@@ -1,18 +1,18 @@
-CC = gcc # using gcc as the c-compiler
-CFLAGS = -O -std=gnu11 -fwrapv # -O is the optimization, use standart gnu11
+#CC = gcc # using gcc as the c-compiler
+CFLAGS = -Wall -std=gnu99 # -O is the optimization, use standart gnu11
 LDLIBS = -lm # lm = link math libary
 
+.PHONEY: all clean
+
+all: out.txt
+	cat $<
+
 out.txt: main
-	./main > out.txt
-	cat out.txt
+	./$< > $@
 
-main: komplex.o
-	$(CC) $^ -o $@
+main: main.o komplex.o
 
-komplex.o: komplex.c
-	$(CC) -c $^ -o $@ $(CFLAGS)
-
-.PHONEY: clean
+main.o komplex.o:komplex.h
 
 clean:
 	$(RM) *.o *.txt main

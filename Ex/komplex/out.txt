@@ -1,0 +1,8 @@
+First test: komplex_print
+Z = (2,5)
+Third test: komplex_new
+W = (4,7)
+Fourth test: komplex_add
+z + w = (6,12)
+Fifth test: komplex_sub
+w - z = (2,2)
