@@ -1,5 +1,7 @@
 First test: komplex_print
 Z = (2,5)
+Second test: komplex_set
+U = (3,6)
 Third test: komplex_new
 W = (4,7)
 Fourth test: komplex_add

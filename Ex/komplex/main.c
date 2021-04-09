@@ -7,12 +7,12 @@ int main(){
   printf("First test: komplex_print\n");
   komplex_print("Z =",z);
 
-/*
+
   printf("Second test: komplex_set\n");
-  komplex* u_point = {0};
-  komplex_set(u_point,3,6);
-  komplex_print("U =",*u_point);
-*/
+  komplex u_point = {0,0};
+  komplex_set(&u_point,3,6);
+  komplex_print("U =",u_point);
+
 
   printf("Third test: komplex_new\n");
   komplex w = komplex_new(4,7);
