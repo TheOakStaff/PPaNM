@@ -16,14 +16,11 @@ erf.pyxplot.png: data.txt Makefile
 	' | pyxplot
 
 data.txt: main
-	./main > data.txt 
-
-.PHONEY:clean
-clean:
-	$(RM) *.o *.png data.txt main
+	./main > data.txt
 
 main: main.o erf.o
 
-test:
-	echo $(CFLAGS)
-	echo $(LDLIBS)
+.PHONEY: clean
+
+clean:
+	$(RM) *.o *.txt .png main
