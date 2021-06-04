@@ -26,9 +26,9 @@ e^x \approx 1 + x + \frac{x^2}{2!}+\frac{x^3}{3!}+\frac{x^4}{4!}...
 This function can be simplified to the "Quick-and-Dirty" approximation
 \begin{equation}
 \label{eq:QnD}
-e^x \approx 1 + x * (1+\frac{x}{2}(1+\frac{x}{3}*(1+\frac{x}{4}(1+\frac{x}{5}...(1+\frac{x}{n})))...)
+e^x \approx 1 + x(1+\frac{x}{2}(1+\frac{x}{3}(1+\frac{x}{4}(1+\frac{x}{5}...(1+\frac{x}{n})))...)
 \end{equation}
-Where increases in \textit{n} increases the accuracy of the approximation (for the pourpose of this report 10 is more than adequate). It is obvious that mulitplying everything into the parentheses one returns at Eq.~(\ref{eq:TaylorEXP}). To determine the accuracy of the "Quick-and-Dirty" approximation the result of the function have been plotted against the \textit{exp(x)} function from "\textit{math.h}". The resulting graph can be found in section \textbf{2}.
+Where increases in \textit{n} increases the accuracy of the approximation (for the pourpose of this report 10 is more than adequate). It is obvious that mulitplying everything into the parentheses one returns at Eq.~(\ref{eq:TaylorEXP}). To determine the accuracy of the "Quick-and-Dirty" approximation the result of the function have been plotted against the \textit{exp(x)} function from "\textit{math.h}". The resulting graph can be found in section \textbf{2}. The "Quick-and-Dirty" function also includes a inbuilt statement which reduces the value given to the function. This is done as the Taylor expansion, on which the "Quick-and-Dirty" function is based, is accurate at smaller \textit{x} values.
 \pagebreak
 \section{Figures}
 \begin{figure}[h]
