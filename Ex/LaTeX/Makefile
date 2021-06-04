@@ -2,7 +2,9 @@ CC = gcc
 CFLAGS = $(shell gsl-config --cflags)
 LDLIBS = $(shell gsl-config --libs)
 
-all: exp.pyxplot.png
+main.pdf: main.tex exp.pyxplot.png
+	pdflatex $<
+	pdflatex $<
 
 exp.pyxplot.png: data.txt Makefile
 	echo '\
@@ -19,11 +21,7 @@ exp.pyxplot.png: data.txt Makefile
 
 data.txt: main
 	./main > data.txt
-	$(MAKE) main.pdf
 
-main.pdf: main.tex
-	pdflatex $<
-	pdflatex $<
 
 clean:
 	$(RM) main *.txt *.pdf *.log *.aux

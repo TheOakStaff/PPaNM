@@ -14,7 +14,7 @@ double my_exp(double x){
 
 int main() {
   FILE* exp_out_stream = fopen("data.txt","w");
-  double xmin = -3, xmax = 5;
+  double xmin = -5, xmax = 5;
   for (double x = xmin; x <=xmax; x += 1.0/8){
     fprintf(exp_out_stream,"%10g %10g %10g\n",x,exp(x),my_exp(x));
     }
