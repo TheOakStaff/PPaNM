@@ -1,0 +1,6 @@
+2.500000 is withing the interval of x[2] to x[3]
+2.500000 has the y value 5.000000
+according to gsl 2.500000 has the y value 5.000000
+
+The integral from 0.000000 to 2.500000 is equal to 6.250000
+The gsl_integral from 0.000000 to 2.500000 is equal to 6.250000
