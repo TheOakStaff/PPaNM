@@ -24,38 +24,56 @@ double linterp (int n,double x[],double y[], double z) {
 }
 
 double lininteg (int n, double x[],double y[], double z){
-  double a = (y[0+1]-y[0])/(x[0+1]-x[0]);
-  double b = y[0]-a*x[0];
-  double F_upper = a/2.*(z*z) + b * z;
-  double F_lower = a/2. * (x[0]*x[0]) + b * x[0];
-  double my_lin_integral = fabs(F_upper - F_lower);
-  return my_lin_integral;
+  double my_int = y[0];
+  FILE* integral_out_stream = fopen("my_integral.txt","w");
+  fprintf(integral_out_stream,"%d %f\n",0,0.);
+    for (size_t i = 0; i < z; i++) {
+      if (i + 1 < z) {
+        double a = (y[i+1]-y[i])/(x[i+1]-x[i]);
+        double b = y[i]-a*x[i];
+        double F_upper = a/2.*(x[i+1]*x[i+1]) + b * x[i+1];
+        double F_lower = a/2. * (x[i]*x[i]) + b * x[i];
+        my_int = my_int + (F_upper - F_lower);
+        fprintf(integral_out_stream,"%zu %f\n",i+1,my_int);
+      }
+      else {
+        double a = (y[i+1]-y[i])/(x[i+1]-x[i]);
+        double b = y[i]-a*x[i];
+        double F_upper = a/2.*(z*z) + b * z;
+        double F_lower = a/2. * (x[i]*x[i]) + b * x[i];
+        my_int = my_int + (F_upper - F_lower);
+        fprintf(integral_out_stream,"%f %f\n",z,my_int);
+      }
+    }
+  fclose(integral_out_stream);
+  return my_int;
 }
 
 int main() {
-  double x[] = {0,1,2,3,4};
-  double y[] = {0,2,4,6,8};
   int n = 5;
-  double z = 2.5;
+  double x[] = {0,1,2,3,4};
+  double y[] = {0,4,-8,12,1};
+  FILE* data1_out_stream = fopen("data.txt","w");
+  for (size_t i = 0; i < n; i++) {
+    fprintf(data1_out_stream,"%f,%f\n",x[i],y[i]);
+  }
+  fclose(data1_out_stream);
+  double z = 4;
   double zy = linterp (n,x,y,z);
   double integ = lininteg(n,x,y,z);
   int i = binsearh(n,x,z);
-  gsl_interp *gsl_interpolation = gsl_interp_alloc(gsl_interp_linear,5);
-  gsl_interp_init(gsl_interpolation,x,y,5);
-  double gsl_eva = gsl_interp_eval(gsl_interpolation,x,y,z,gsl_interp_accel_alloc ());
-  double gsl_int = gsl_interp_eval_integ(gsl_interpolation,x,y,0,z,gsl_interp_accel_alloc ());
 
+// GSL PART
 
-  FILE* outtxt_out_stream = fopen("out.txt","w");
-  fprintf(outtxt_out_stream,"%f is withing the interval of x[%d] to x[%d]\n\n",z,i,i+1);
-  fprintf(outtxt_out_stream,"%f has the y value %f\n",z,zy);
-  fprintf(outtxt_out_stream,"according to gsl %f has the y value %f\n\n",z,gsl_eva);
-  fprintf(outtxt_out_stream,"The integral from %f to %f is equal to %f\n",x[0],z,integ);
-  fprintf(outtxt_out_stream,"The gsl_integral from %f to %f is equal to %f\n",x[0],z,gsl_int);
-  fclose(outtxt_out_stream);
+  gsl_interp* linear= gsl_interp_alloc(gsl_interp_linear,n);
+  gsl_interp_init(linear,x,y,n);
+  FILE* GSL_out_stream = fopen("GSL_data.txt","w");
+  for (size_t i = 0; i < n; i++) {
+    double interp_lin = gsl_interp_eval(linear,x,y,i,NULL);
+    double integ_lin = gsl_interp_eval_integ(linear,x,y,x[0],i,NULL);
+    fprintf(GSL_out_stream, "%zu %f %f\n",i,interp_lin,integ_lin);
+  }
+  fclose(GSL_out_stream);
 
-  FILE* data_out_stream = fopen("my_data.txt","w");
-  fprintf(data_out_stream,"%f,%f",z,zy);
-  fclose(data_out_stream);
   return 0;
 }
