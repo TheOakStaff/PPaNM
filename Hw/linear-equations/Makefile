@@ -11,3 +11,6 @@ out.txt: main
 	cat out.txt
 
 main:main.c
+
+clean:
+	$(RM) *.txt main
