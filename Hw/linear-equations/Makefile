@@ -8,7 +8,6 @@ all: out.txt
 
 out.txt: main
 	./$< > $@
-	cat out.txt
 
 main:main.c
 

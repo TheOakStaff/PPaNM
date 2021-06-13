@@ -1,0 +1,4 @@
+vector sum = 54.748107
+vector sum = 41.018001
+vector sum = 41.037106
+vector sum = 67.499628
