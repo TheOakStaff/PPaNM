@@ -10,7 +10,6 @@ double gsl_vector_len(gsl_vector* vec, int n){
   for (size_t i = 0; i < n; i++) {
     val += gsl_vector_get(vec,i) * gsl_vector_get(vec,i);
   }
-  printf("vector sum = %f\n",val);
   return val;
 }
 
@@ -70,6 +69,32 @@ int print_matrix(FILE* stream, int n, int m, const gsl_matrix *X){
   fprintf(stream,"\n");
 }
 
+void GS_solve(gsl_matrix *Q, gsl_matrix *R, gsl_vector *b, gsl_vector *x, int n) {
+  gsl_blas_dgemv(CblasTrans, 1, Q, b, 0, x);
+  for(int i=n-1; i >= 0; i--){
+    double s=gsl_vector_get(x, i);
+    for(int k = i+1; k < n; k++){
+      s = s - gsl_matrix_get(R, i, k) * gsl_vector_get(x, k);
+    }
+    gsl_vector_set(x, i, s/gsl_matrix_get(R, i, i));
+  }
+}
+
+/*
+void GS_solve(gsl_matrix* Q, gsl_matrix* R, gsl_vector* b, gsl_vector* x, int l){
+gsl_vector* Qb = gsl_vector_alloc(l);
+gsl_blas_dgemv(CblasTrans,1,Q,b,0,Qb);
+double z = gsl_vector_get(Qb,l-1);
+gsl_vector_set(x,l-1,z);
+double val = 0.;
+for (size_t i = l-1; i > 0; i--) {
+  int current = i;
+  while (i<l) {
+    val = gsl_vector_get(Qb,i-1) - gsl_vector_get(x,i);
+    gsl_vector_set(x,l-1,val);
+*/
+
+
 int main(int argc, char const *argv[]) {
   int n = 6;
   int m = 4;
@@ -83,22 +108,92 @@ int main(int argc, char const *argv[]) {
     }
   }
 
+  int l = 4;
+  gsl_vector *b = gsl_vector_alloc(l);
+  gsl_vector *x = gsl_vector_alloc(l);
+  gsl_matrix *L = gsl_matrix_alloc(l,l);
+  gsl_matrix *K = gsl_matrix_alloc(l,l);
+  for (size_t i = 0; i < l; i++) {
+    gsl_vector_set(b,i,(double)rand_r(&seed) / (double)RAND_MAX*10);
+    for (size_t j = 0; j < l; j++) {
+      gsl_matrix_set(L,i,j,(double)rand_r(&seed) / (double)RAND_MAX*10);
+    }
+
+  }
+
+  FILE* stream2 = fopen("data2.txt","w");
+  fprintf(stream2, "vector b\n");
+  gsl_vector_print(stream2,b,l);
+  fprintf(stream2, "\n");
+  fclose(stream2);
+
   FILE* stream = fopen("data.txt","w");
+  fprintf(stream, "A\n");
   print_matrix(stream,n,m,A);
   fclose(stream);
+
   stream = fopen("data.txt","a");
+  fprintf(stream, "Blank Matrix\n");
   print_matrix(stream,m,m,R);
   fclose(stream);
 
   GS_decomp(A, R, n, m);
+  gsl_matrix *C = gsl_matrix_alloc(m,m);
+  gsl_matrix *Anew = gsl_matrix_alloc(n,m);
+  gsl_blas_dgemm(CblasTrans,CblasNoTrans,1,A,A,0,C);
+  gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1,A,R,0,Anew);
+
+  gsl_matrix *Qnew = gsl_matrix_alloc(l,l);
+  gsl_matrix_memcpy(Qnew,L);
+
+  stream2 = fopen("data2.txt","a");
+  fprintf(stream2, "A\n");
+  print_matrix(stream2,l,l,L);
+  fclose(stream2);
+
+  GS_decomp(L, K, l, l);
+  stream2 = fopen("data2.txt","a");
+  fprintf(stream, "Q\n");
+  print_matrix(stream,l,l,L);
+  fprintf(stream, "R\n");
+  print_matrix(stream,l,l,K);
+  fclose(stream2);
+  GS_solve(L,K,b,x,l);
+
+  stream2 = fopen("data2.txt","a");
+  fprintf(stream2, "After back-substitution\n");
+  fprintf(stream2, "Q\n");
+  print_matrix(stream2,l,l,L);
+  fprintf(stream2, "R\n");
+  print_matrix(stream2,l,l,K);
+  fprintf(stream2, "b\n");
+  gsl_vector_print(stream2,b,l);
+  fprintf(stream2, "\n");
+  fprintf(stream2, "x\n");
+  gsl_vector_print(stream2,x,l);
+  fprintf(stream2, "\n");
+
+
+  gsl_vector *bnew = gsl_vector_alloc(l);
+  gsl_blas_dgemv(CblasNoTrans,1,Qnew,x,0,bnew);
+
+  fprintf(stream2, "bnew\n");
+  gsl_vector_print(stream2,bnew,l);
+  fprintf(stream2, "\n");
+  fclose(stream2);
 
   stream = fopen("data.txt","a");
   fprintf(stream, "Q\n");
   print_matrix(stream,n,m,A);
-  fclose(stream);
-  stream = fopen("data.txt","a");
+
   fprintf(stream, "R\n");
   print_matrix(stream,m,m,R);
+
+  fprintf(stream, "Q^TQ\n");
+  print_matrix(stream,m,m,C);
+
+  fprintf(stream, "Anew\n");
+  print_matrix(stream,n,m,Anew);
   fclose(stream);
 
   return 0;
