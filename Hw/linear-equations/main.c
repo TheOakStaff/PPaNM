@@ -229,7 +229,7 @@ int main() {
 
   FILE* stream3 = fopen("data3.txt","w");
 
-  fprintf(stream3, "Q\n");
+  fprintf(stream3, "A\n");
   print_matrix(stream3,h,h,Cnew);
   fprintf(stream3, "R\n");
   print_matrix(stream3,h,h,D);
