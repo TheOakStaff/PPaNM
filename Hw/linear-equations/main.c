@@ -196,5 +196,6 @@ int main(int argc, char const *argv[]) {
   print_matrix(stream,n,m,Anew);
   fclose(stream);
 
+  printf("The results for A.1 can be found in data.txt\nThe results for A.2 can be found in data2.txt");
   return 0;
 }
