@@ -1,2 +1,3 @@
 The results for A.1 can be found in data.txt
 The results for A.2 can be found in data2.txt
+The results for B can be found in data3.txt

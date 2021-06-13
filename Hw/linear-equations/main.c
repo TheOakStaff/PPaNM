@@ -94,12 +94,24 @@ for (size_t i = l-1; i > 0; i--) {
     gsl_vector_set(x,l-1,val);
 */
 
+void GS_inverse(gsl_matrix *Q, gsl_matrix *R, gsl_matrix *B,gsl_matrix *X, int n){
+  gsl_matrix_set_identity(B);
+  gsl_vector *e = gsl_vector_alloc(n);
+  gsl_vector *buff = gsl_vector_alloc(n);
+  for(int i = 0; i < n; i++){
+    gsl_matrix_get_col(e, B, i);
+    GS_solve(Q,R,e,buff,n);
+    gsl_matrix_set_col(X,i,buff);
+  }
+  gsl_vector_free(e);
+  gsl_vector_free(buff);
+}
 
-int main(int argc, char const *argv[]) {
+int main() {
   int n = 6;
   int m = 4;
   int size_m = n*m;
-  int seed = 2;
+  int seed = 3;
   gsl_matrix *A = gsl_matrix_alloc(n,m);
   gsl_matrix *R = gsl_matrix_alloc(m,m);
   for (size_t i = 0; i < n; i++) {
@@ -196,6 +208,52 @@ int main(int argc, char const *argv[]) {
   print_matrix(stream,n,m,Anew);
   fclose(stream);
 
-  printf("The results for A.1 can be found in data.txt\nThe results for A.2 can be found in data2.txt");
+  printf("The results for A.1 can be found in data.txt\nThe results for A.2 can be found in data2.txt\n");
+
+  // PART B
+
+  int h = 4;
+  gsl_matrix *Cnew = gsl_matrix_alloc(h,h);
+  gsl_matrix *CnewCopy = gsl_matrix_alloc(h,h);
+  gsl_matrix *D = gsl_matrix_alloc(h,h);
+  gsl_matrix *E = gsl_matrix_alloc(h,h);
+  gsl_matrix *X = gsl_matrix_alloc(h,h);
+  gsl_matrix *I = gsl_matrix_alloc(h,h);
+  for (size_t i = 0; i < h; i++) {
+    for (size_t j = 0; j < h; j++) {
+      gsl_matrix_set(Cnew,i,j,(double)rand_r(&seed) / (double)RAND_MAX*10);
+    }
+  }
+
+  gsl_matrix_memcpy(CnewCopy,Cnew);
+
+  FILE* stream3 = fopen("data3.txt","w");
+
+  fprintf(stream3, "Q\n");
+  print_matrix(stream3,h,h,Cnew);
+  fprintf(stream3, "R\n");
+  print_matrix(stream3,h,h,D);
+
+  GS_decomp(Cnew, D, h, h);
+  GS_inverse(Cnew, D, E, X, h);
+
+  fprintf(stream3, "Q after \n");
+  print_matrix(stream3,h,h,Cnew);
+  fprintf(stream3, "R after \n");
+  print_matrix(stream3,h,h,D);
+
+  fprintf(stream3, "B^-1\n");
+  print_matrix(stream3,h,h,X);
+
+  gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1,X,CnewCopy,0,I);
+  fprintf(stream3, "B^-1 * A = I\n");
+  print_matrix(stream3,h,h,I);
+
+  gsl_blas_dgemm(CblasNoTrans,CblasNoTrans,1,CnewCopy,X,0,I);
+  fprintf(stream3, "A * B^-1 = I\n");
+  print_matrix(stream3,h,h,I);
+
+  fclose(stream3);
+  printf("The results for B can be found in data3.txt\n");
   return 0;
 }
