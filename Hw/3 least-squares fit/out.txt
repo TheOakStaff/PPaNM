@@ -22,6 +22,10 @@ Matrix A
 vector c (a,lambda)
 4.95867 0.171379 
 
+with uncertainties:
+da = 0.029838	 dlambda = 0.003536
 Half life can be found using log(2)/lambda
 Using this we find the half-life to be 4.044518 days 
-Ra224 has a actual half-life of 3.6319 days
+within the uncertainties
+Lower-half-life = 3.962767	Upper-half-life = 4.129713
+Ra224 has a actual half-life of 3.6319 days, so even with uncertainties the result is still of by almost half a day
