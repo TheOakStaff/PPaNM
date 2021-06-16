@@ -28,10 +28,10 @@ Pan.pyxplot.png: all Makefile
 	set yrange [0:5500000];\
 	set title "Infections in DK";\
 	plot \
-	 "data2.txt" using 1:3 with line title "Infected Tc 5"\
-	,"data3.txt" using 1:3 with line title "Infected Tc 2.5"\
-	,"data4.txt" using 1:3 with line title "Infected Tc 1.25"\
-	,"data5.txt" using 1:3 with line title "Infected Tc 0.625"\
+	 "data2.txt" using 1:3 with line title "Infected Tc 6"\
+	,"data3.txt" using 1:3 with line title "Infected Tc 3"\
+	,"data4.txt" using 1:3 with line title "Infected Tc 1.5"\
+	,"data5.txt" using 1:3 with line title "Infected Tc 0.75"\
 	' | pyxplot
 
 all: out.txt

@@ -204,12 +204,12 @@ int main() {
   b = 100.;
   double N=5.5e6;
   gsl_vector *yA = gsl_vector_alloc(q);
-  gsl_vector_set(yA,1,661);
-  gsl_vector_set(yA,2,5.5e5);
+  gsl_vector_set(yA,1,1000);
+  gsl_vector_set(yA,2,0);
   gsl_vector_set(yA,0,N-gsl_vector_get(yA,2)-gsl_vector_get(yA,1));
 
 
-  double Tc=5;
+  double Tc=6;
   double Tr=12;
   FILE* stream2 = fopen("data2.txt","w");
   driverTC(&ftc,a,yA,b,h,acc,eps,Tc,Tr,N,stream2);
