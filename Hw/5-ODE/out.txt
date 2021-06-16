@@ -1,2 +1,5 @@
+As Pan.pyxplot.png shows, a decrease in the Tc results in 
+a much higher infection peak. But also a much sharper drop in infections.
+
 Data for the Harmonic can be found in data.txt
 The data for the pandemic can be found in data(2,3,4 and 5).txt

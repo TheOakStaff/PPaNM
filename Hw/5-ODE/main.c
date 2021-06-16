@@ -230,6 +230,7 @@ int main() {
   driverTC(&ftc,a,yA,b,h,acc,eps,Tc,Tr,N,stream2);
   fclose(stream2);
 
+  printf("As Pan.pyxplot.png shows, a decrease in the Tc results in \na much higher infection peak. But also a much sharper drop in infections.\n\n");
   printf("Data for the Harmonic can be found in data.txt\nThe data for the pandemic can be found in data(2,3,4 and 5).txt\n");
   return 0;
 }
