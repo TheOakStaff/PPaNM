@@ -80,7 +80,7 @@ void driver (
   gsl_vector *yh = gsl_vector_alloc(n);
   gsl_vector *err = gsl_vector_alloc(n);
   double s, normy, tol, error;
-
+  FILE* stream1 = fopen("data.txt","w");
   while (x<b) {
     if (x+h>b) {
       h=b-x;
@@ -98,25 +98,22 @@ void driver (
     }
     normy=sqrt(s);
 
-    FILE* stream = fopen("debug.txt","w");
-    vector_print(stream,yh);
-    fclose(stream);
-
 
 
     tol = (normy*eps+acc)*sqrt(h/(b-a));
     if (error<tol) {
       x+=h;
       y=yh;
-      printf("%10g ",x);
+      fprintf(stream1,"%10g ",x);
       for (int i = 0; i < n; i++) {
-        printf("%10g ",gsl_vector_get(yh,i));
+        fprintf(stream1,"%10g ",gsl_vector_get(yh,i));
       }
-      printf("\n");
+      fprintf(stream1,"\n");
     }
     h*=pow(tol/error,0.25)*0.95;
   }
-printf("\n\n\n\n");
+  fprintf(stream1,"\n\n\n\n");
+  fclose(stream1);
 }
 
 void driverTC ( // TC driver
@@ -214,24 +211,25 @@ int main() {
 
   double Tc=5;
   double Tr=12;
-  FILE* stream2 = fopen("out2.txt","w");
+  FILE* stream2 = fopen("data2.txt","w");
   driverTC(&ftc,a,yA,b,h,acc,eps,Tc,Tr,N,stream2);
   fclose(stream2);
 
   Tc=Tc/2;
-  stream2 = fopen("out3.txt","w");
+  stream2 = fopen("data3.txt","w");
   driverTC(&ftc,a,yA,b,h,acc,eps,Tc,Tr,N,stream2);
   fclose(stream2);
 
   Tc=Tc/2;
-  stream2 = fopen("out4.txt","w");
+  stream2 = fopen("data4.txt","w");
   driverTC(&ftc,a,yA,b,h,acc,eps,Tc,Tr,N,stream2);
   fclose(stream2);
 
   Tc=Tc/2;
-  stream2 = fopen("out5.txt","w");
+  stream2 = fopen("data5.txt","w");
   driverTC(&ftc,a,yA,b,h,acc,eps,Tc,Tr,N,stream2);
   fclose(stream2);
 
+  printf("Data for the Harmonic can be found in data.txt\nThe data for the pandemic can be found in data(2,3,4 and 5).txt\n");
   return 0;
 }
