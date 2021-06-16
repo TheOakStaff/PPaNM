@@ -129,7 +129,8 @@ void driverTC ( // TC driver
 	double eps,
   double Tc,
   double Tr,
-  int N
+  int N,
+  FILE* stream2
 ) {
   int n = ya->size;
   double x=a;
@@ -138,7 +139,6 @@ void driverTC ( // TC driver
   gsl_vector *yh = gsl_vector_alloc(n);
   gsl_vector *err = gsl_vector_alloc(n);
   double s, normy, tol, error;
-  FILE* stream2 = fopen("out2.txt","w");
   while (x<b) {
     if (x+h>b) {
       h=b-x;
@@ -156,12 +156,6 @@ void driverTC ( // TC driver
     }
     normy=sqrt(s);
 
-
-    vector_print(stream2,yh);
-
-
-
-
     tol = (normy*eps+acc)*sqrt(h/(b-a));
     if (error<tol) {
       x+=h;
@@ -175,7 +169,6 @@ void driverTC ( // TC driver
     h*=pow(tol/error,0.25)*0.95;
   }
     fprintf(stream2,"\n\n\n\n");
-  fclose(stream2);
 }
 
 int main() {
@@ -210,19 +203,35 @@ int main() {
   }
 
   int q = 3;
-  a = 0;
-  b = 100;
+  a = 0.;
+  b = 100.;
+  double N=5.5e6;
   gsl_vector *yA = gsl_vector_alloc(q);
   gsl_vector_set(yA,1,661);
-  gsl_vector_set(yA,2,5e5);
+  gsl_vector_set(yA,2,5.5e5);
   gsl_vector_set(yA,0,N-gsl_vector_get(yA,2)-gsl_vector_get(yA,1));
 
-  double N=5.5e6;
+
   double Tc=5;
-  double Tr=10;
+  double Tr=12;
+  FILE* stream2 = fopen("out2.txt","w");
+  driverTC(&ftc,a,yA,b,h,acc,eps,Tc,Tr,N,stream2);
+  fclose(stream2);
 
-  driver(&ftc,a,ya,b,h,acc,eps,Tc,Tr,N);
+  Tc=Tc/2;
+  stream2 = fopen("out3.txt","w");
+  driverTC(&ftc,a,yA,b,h,acc,eps,Tc,Tr,N,stream2);
+  fclose(stream2);
 
+  Tc=Tc/2;
+  stream2 = fopen("out4.txt","w");
+  driverTC(&ftc,a,yA,b,h,acc,eps,Tc,Tr,N,stream2);
+  fclose(stream2);
+
+  Tc=Tc/2;
+  stream2 = fopen("out5.txt","w");
+  driverTC(&ftc,a,yA,b,h,acc,eps,Tc,Tr,N,stream2);
+  fclose(stream2);
 
   return 0;
 }
