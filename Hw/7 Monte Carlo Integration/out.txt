@@ -10,3 +10,10 @@ with error = 0.006581480206
 Monte Carlo integration with 1e7 points retuns 40.00628492
 with error = 0.007021091519
 
+Part B
+1.38897 5.88012e-05 0 
+
+∫0π  dx/π ∫0π  dy/π ∫0π  dz/π [1-cos(x)cos(y)cos(z)]⁻¹ = 1.3932039296856768591842462603255
+Halton-Corput Monte Carlo integration with 1e7 points retuns 1.38896665
+with error = 5.880120524e-05
+
