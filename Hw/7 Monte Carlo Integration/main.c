@@ -168,5 +168,7 @@ int main(int argc, char const *argv[]) {
   printf("Halton-Corput Monte Carlo integration with 1e7 points retuns %.10g\n",gsl_vector_get(vec3,0));
   printf("with error = %.10g\n\n", gsl_vector_get(vec3,1));
 
+  printf("While the error of the Halton-Corput is much lower than the \nplainMC function, the final value is further from the actual value of the integral\n");
+
   return 0;
 }

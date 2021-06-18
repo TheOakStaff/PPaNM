@@ -17,3 +17,5 @@ Part B
 Halton-Corput Monte Carlo integration with 1e7 points retuns 1.38896665
 with error = 5.880120524e-05
 
+While the error of the Halton-Corput is much lower than the 
+plainMC function, the final value is further from the actual value of the integral
