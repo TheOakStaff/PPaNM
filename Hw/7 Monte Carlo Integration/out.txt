@@ -1,0 +1,12 @@
+1.39602 0.00658148 0 
+
+∫0π  dx/π ∫0π  dy/π ∫0π  dz/π [1-cos(x)cos(y)cos(z)]⁻¹ = 1.3932039296856768591842462603255
+Monte Carlo integration with 1e6 points retuns 1.396018312
+with error = 0.006581480206
+
+40.0063 0.00702109 0 
+
+∫03  dx ∫02  dy ∫01  dz x²+2y²+3z² = 40
+Monte Carlo integration with 1e7 points retuns 40.00628492
+with error = 0.007021091519
+
