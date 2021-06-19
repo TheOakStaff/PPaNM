@@ -1,0 +1,12 @@
+-0.5 
+
+0 0 
+
+The initial value is (x, y) = (0, 3)
+The minimum should be at (x, y)= (1, 1)
+The minimum is found at (x, y) = (-0.248553, 0.0667562),
+
+The final value differs from the actual value. However, plotting thefunction using Wolfram-Alpha reveals that the 'valley floor' is rather extencive.
+As such, our value of likely lies in an area where the 
+rate of change is too low for our function to handle with 'my' current processign power
+

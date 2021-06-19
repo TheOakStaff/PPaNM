@@ -45,6 +45,12 @@ void GS_decomp(gsl_matrix* A, gsl_matrix* R){
       gsl_matrix_set(R,i,j,z);
     }
   }
+  for (int i = 0; i < n; i++) {
+    gsl_vector_free(a[i]);
+    gsl_vector_free(e[i]);
+    gsl_vector_free(u[i]);
+  }
+
 }
 
 void GS_solve(gsl_matrix *Q, gsl_matrix *R, gsl_vector *b, gsl_vector *x) {
@@ -76,6 +82,7 @@ void GS_inverse(gsl_matrix *A, gsl_matrix *B){
   gsl_vector_free(e);
   gsl_vector_free(buff);
   gsl_matrix_free(R);
+  gsl_matrix_free(Acopy);
 }
 
 
