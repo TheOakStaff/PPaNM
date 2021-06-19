@@ -1,5 +1,9 @@
+Here we find the minimum value of x²+x which should be -0.5
+fx =
 -0.5 
 
+Here we find the minimum value of x²+y² which should be 0,0
+fx =
 0 0 
 
 The initial value is (x, y) = (0, 3)

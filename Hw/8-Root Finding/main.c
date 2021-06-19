@@ -103,8 +103,11 @@ int main() {
   gsl_vector *X_val = gsl_vector_alloc(n);
   gsl_vector_set(X_val,0,2);
   newton(fun1D,X_val,tolerance);
+  printf("Here we find the minimum value of x²+x which should be -0.5\n");
+  printf("fx =\n");
   vector_print(stdout,X_val);
   gsl_vector_free(X_val);
+
 
 
   n = 2;
@@ -112,8 +115,11 @@ int main() {
   gsl_vector_set(X_val2,0,2);
   gsl_vector_set(X_val2,1,2);
   newton(fun2D,X_val2,tolerance);
+  printf("Here we find the minimum value of x²+y² which should be 0,0\n");
+  printf("fx =\n");
   vector_print(stdout,X_val2);
   gsl_vector_free(X_val2);
+
 
   n = 2;
   gsl_vector *X_val3 = gsl_vector_alloc(n);
