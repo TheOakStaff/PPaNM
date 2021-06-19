@@ -125,7 +125,8 @@ int main() {
   printf("The minimum is found at (x, y) = (%g, %g),\n\n", gsl_vector_get(X_val3,0), gsl_vector_get(X_val3,1));
   gsl_vector_free(X_val3);
   printf("The final value differs from the actual value. However, plotting the");
-  printf("function using Wolfram-Alpha reveals that the 'valley floor' is rather extencive.\n");
+  printf("function using Wolfram-Alpha[1] reveals that the 'valley floor' is rather extencive.\n");
   printf("As such, our value of likely lies in an area where the \nrate of change is too low for our function to handle\n\n");
+  printf("[1] https://bit.ly/3qaU34S\n\n");
   return 0;
 }
