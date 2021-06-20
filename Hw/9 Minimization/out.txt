@@ -23,7 +23,7 @@ The found minimum is (1,1)
 Testing Himmelblau function
 Initial values = (4,4)
 Actual minimum located at 
-(3,2)  (-2.80511,3.1313)  (-3.7793:-3.2831)  (3.5844,-1.84812)
+(3,2)  (-2.805118,3.131312)  (-3.779310:-3.283186)  (3.584428,-1.848126)
 
 nSteps = 19 
 nScales = 18 

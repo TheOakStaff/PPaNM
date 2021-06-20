@@ -178,7 +178,7 @@ int main() {
   gsl_vector_set(minimum3,0,4);
   gsl_vector_set(minimum3,1,4);
   printf("Testing Himmelblau function\n");
-  printf("Initial values = (%g,%g)\nActual minimum located at \n(3,2)  (-2.80511,3.1313)  (-3.7793:-3.2831)  (3.5844,-1.84812)\n",gsl_vector_get(minimum3,0),gsl_vector_get(minimum3,1));
+  printf("Initial values = (%g,%g)\nActual minimum located at \n(3,2)  (-2.805118,3.131312)  (-3.779310:-3.283186)  (3.584428,-1.848126)\n",gsl_vector_get(minimum3,0),gsl_vector_get(minimum3,1));
   qNM(Himmelblau,minimum3,tol3);
   printf("The found minimum is (%g,%g)\n", gsl_vector_get(minimum3,0),gsl_vector_get(minimum3,1));
   return 0;
