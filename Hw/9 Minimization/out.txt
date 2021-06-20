@@ -1,0 +1,33 @@
+Testing using f(x,y) = (x-2)² + (y-2)² 
+Initial values = (-20,-20)
+Actual minimum located at (2,2)
+
+nSteps = 5 
+nScales = 4 
+nResets = 0 
+fVal = 2.32142e-18
+
+The found minimum is (2,2)
+
+Testing Rosenbrocks valley function a=1, b=100 
+Initial values = (2,2)
+Actual minimum located at (1,1)
+
+nSteps = 25709 
+nScales = 25708 
+nResets = 0 
+fVal = 3.07139e-13
+
+The found minimum is (1,1)
+
+Testing Himmelblau function
+Initial values = (4,4)
+Actual minimum located at 
+(3,2)  (-2.80511,3.1313)  (-3.7793:-3.2831)  (3.5844,-1.84812)
+
+nSteps = 19 
+nScales = 18 
+nResets = 0 
+fVal = 7.61684e-15
+
+The found minimum is (-2.80512,3.13131)
