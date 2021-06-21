@@ -11,7 +11,7 @@
 
 
 double activation(double x) {
-  return x*exp(-x*x);
+  return x*exp(-1.0*(x*x));
 }
 
 void neuron(
@@ -127,9 +127,9 @@ gsl_vector* learn(
 }
 
 int main() {
-  int neurons = 3;
+  int neurons = 8;
   int n = 20, m_in = 1, m_out = 1;
-  int seed = 6;
+  int seed = 5;
   double eps = 1e-3;
 
   gsl_matrix *data_in = gsl_matrix_alloc(n, m_in);
@@ -137,8 +137,8 @@ int main() {
 
   for (int x = 0; x < n; x++) {
     for (int y = 0; y < m_in; y++) {
-      gsl_matrix_set(data_in, x, y, (double) rand_r(&seed)/ (double) RAND_MAX * 10);
-      gsl_matrix_set(data_out, x, y, (double) rand_r(&seed)/ (double) RAND_MAX * 10);
+      gsl_matrix_set(data_in, x, y, x);
+      gsl_matrix_set(data_out, x, y, 2*x);
     }
   }
 
@@ -151,15 +151,26 @@ int main() {
   gsl_vector *x = gsl_vector_alloc(m_in);
   gsl_vector *y = gsl_vector_alloc(m_out);
 
-  gsl_vector_set(x, 0, 7.);
+  gsl_vector_set(x, 0, 5.1);
 
-  //double network(activation, x, y, p, neurons);
+  network(activation, x, y, p, neurons);
 
   FILE* stream = fopen("data.txt","w");
   for (int i = 0; i < data_in->size1; i++) {
     fprintf(stream, "%g %g\n", gsl_matrix_get(data_in,i,0),gsl_matrix_get(data_out,i,0));
   }
   fclose(stream);
+
+  FILE* stream2 = fopen("Tabdata.txt","w");
+  for (double i = -2; i < 2; i+=1./8.) {
+    fprintf(stream2, "%g %g\n",i,activation(i));
+  }
+  fclose(stream2);
+
+  FILE* stream3 = fopen("FindPoint.txt","w");
+    fprintf(stream3, "%g %g\n",gsl_vector_get(x,0),gsl_vector_get(y,0));
+  fclose(stream3);
+
 
   gsl_matrix_free(data_in);
   gsl_matrix_free(data_out);
