@@ -12,7 +12,7 @@ out.txt: main
 	./main > out.txt
 	cat out.txt
 
-main: main.c
+main: main.o My_vec_calc.o
 
 clean:
-	$(RM) *.txt main *.png
+	$(RM) *.txt main *.png *.o
