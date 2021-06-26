@@ -10,7 +10,7 @@ out.txt: main
 	./$< > $@
 	cat out.txt
 
-main: main.o My_vec_calc.o
+main: main.o My_vec_calc.o SVD.o
 
 clean:
 	$(RM) main *.txt *.o
