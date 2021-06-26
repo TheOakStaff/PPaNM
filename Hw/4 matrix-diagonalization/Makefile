@@ -30,4 +30,4 @@ out.txt: main
 main: main.o My_vec_calc.o
 
 clean:
-	$(RM) main *.txt *.o
+	$(RM) main *.txt *.o *.png
