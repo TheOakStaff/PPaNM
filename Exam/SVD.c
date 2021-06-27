@@ -54,7 +54,7 @@ void JSVD(gsl_matrix *A, gsl_matrix *V, gsl_matrix *U, gsl_matrix *D){
     }
   }
 
-  for (int i = 0; i < A->size2; i++) {
+  for (int i = 0; i < A->size1; i++) {
     gsl_matrix_get_col(vec, A, i);
     gsl_matrix_set(D,i,i,vector_len(vec));
 

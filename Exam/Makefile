@@ -13,4 +13,4 @@ out.txt: main
 main: main.o My_vec_calc.o SVD.o
 
 clean:
-	$(RM) main *.txt *.o
+	$(RM) main out.txt TimeTest.txt *.o
