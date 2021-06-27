@@ -16,7 +16,7 @@ GSL - GNU Scientific Library (v. 2.5) "gsl_linalg_SV_decomp_jacobi". Both
 algorithms are given the same initial matrix of size n and the time it takes to
 complete the operation is then measured. Generally results indicate that the two
 algorithms are evenly matched for small matrices n < 5, for larger matrices the
-GSL algorithm is noticeably faster at n = 400 the difference is one order of
+GSL algorithm is noticeably faster, at n = 400 the difference is one order of
 magnitude.
 
 I rate my algorithm a 8/10.
