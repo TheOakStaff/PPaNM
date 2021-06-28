@@ -1,0 +1,12 @@
+
+Integral of sqrt(x)-2/3 = 1.35049e-05
+To achive sufficent accuracy the fucntion was called = 44
+The true integral of sqrt(x)-2/3 = 0
+
+Integral of 4*sqrt(1-x²) - π = 4.2218e-06
+To achive sufficent accuracy the fucntion was called = 100
+The true integral of 4*sqrt(1-x²) - π = 0
+
+Integral of x²-x³ = 0.0833333
+To achive sufficent accuracy the fucntion was called = 36
+The true integral of x²-x³ = 0.83(3)

@@ -1,5 +1,5 @@
-1 gives = 78540828
-2 gives = 78537111
+1 gives = 78537111
+2 gives = 78540828
 3 gives = 78542629
 4 gives = 78540610
 Pi is roughly equal to 3.141612
